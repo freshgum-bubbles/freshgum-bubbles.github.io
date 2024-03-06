@@ -39,6 +39,10 @@ sass:
   # style: compressed
   sass_dir: _sass
 
+jekyll-minifier:
+  uglifier_args:
+    harmony: true
+
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
