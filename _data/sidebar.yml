@@ -16,7 +16,7 @@ services:
     link: https://npmjs.com/~freshgum
   - name: email
     username: freshgum dot bubbles at protonmail dot com
-    link: https://about.com
+    link: "#"
 
 avatar:
   source: https://github.com/freshgum-bubbles.png
