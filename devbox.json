@@ -1,0 +1,22 @@
+{
+  "packages": [
+    "gnumake@latest",
+    "ruby_3_3@latest",
+    "gcc@latest",
+    "jekyll@latest",
+    "bundler@latest",
+    "libffi@latest",
+    "cmake@latest",
+    "pkg-config@latest"
+  ],
+  "shell": {
+    "init_hook": [
+      "echo 'Welcome to devbox!' > /dev/null"
+    ],
+    "scripts": {
+      "test": [
+        "echo \"Error: no test specified\" && exit 1"
+      ]
+    }
+  }
+}
