@@ -1,0 +1,221 @@
+---
+---
+
+@import "breakpoints";
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-top: 40px;
+    font-family: "IBM Plex Sans Condensed";
+}
+
+h1 {
+    font-weight: initial;
+}
+
+.back-link {
+    font-size: 32px;
+    font-weight: lighter;
+    font-style: italic;
+    font-family: var(--font-heading);
+    text-decoration-thickness: from-font;
+
+    line-height: 2.5rem;
+    letter-spacing: -0.02em;
+    color: var(--fg-color-primary);
+}
+
+main {
+    font-family: "IBM Plex Serif";
+    max-width: 800px;
+}
+
+.post-title {
+    margin-bottom: 5px;
+
+    /* todo: light mode */
+    color: var(--fg-color-deemphasized);
+
+    font-style: unset;
+}
+
+/** Table of Contents styling */
+/** Style the <details> so it looks like ordinary text. */
+.page-toc-opener > summary {
+    list-style-type: none;
+
+    /** Make it look like a link. */
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+/** Courtesy of <https://stackoverflow.com/a/66814239>.  Thank you! :-) */
+.page-toc-opener > summary::-webkit-details-marker, .page-toc-opener > summary::marker {
+    display: none;
+}
+
+.page-toc-opener {
+    display: inline;
+}
+
+#toc {
+    /**
+      * Move the <li> indicator inside the block element, so they don't "fall outside"
+      * the <ul> when the low padding is applied.
+      */
+    list-style-position: inside;
+    padding-left: 0px;
+}
+
+.post-meta {
+    margin-top: 0px;
+    font-family: monospace;
+
+    /** Start off as a vertical list for smaller devices. */
+    display: flex;
+    flex-direction: column;
+}
+
+.post-meta-separator {
+    /**
+      * Hide the separator for smaller screens, because we display
+      * the post-meta as a vertical list for them.
+      */
+    display: none;
+}
+
+@media screen and (min-width: $brk-vsmall) {
+    .post-meta {
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .post-meta-separator {
+        display: unset;
+    }
+}
+
+@media screen and (min-width: $brk-small) {
+    .post-meta {
+        gap: 5px;
+    }
+}
+
+/**
+  * Make the post-meta's flex-direction column if the <details> is expanded.
+  * This stops there being a bunch of wasted space to the left of it.
+  */
+.post-meta:has(.page-toc-opener[open]) {
+    flex-direction: column;
+}
+
+/** ...also hide the separator. */
+.post-meta:has(.page-toc-opener[open]) .post-meta-separator {
+    display: none;
+}
+
+.post-meta:has(.page-toc-opener[open]) > .page-toc-opener > summary::after {
+    content: ' ⮝';
+}
+
+.post-datetime {
+    white-space: nowrap;
+}
+
+.post-leadin {
+    margin-bottom: 30px;
+    /* max-width: 850px; */
+}
+
+.post-content {
+    line-height: 1.5rem;
+
+    font-size: 19.5px;
+    line-height: 1.85rem;
+}
+
+.post-content > p {
+    // max-width: 600px;
+}
+
+.post-heading-anchor {
+    text-decoration: none;
+    /* todo: light mode */
+    color: #909090;
+}
+
+/** Make footnotes and heading anchors smaller on larger devices. */
+@media screen and (min-width: 700px) {
+    /* Make post heading anchors smaller. */
+    .post-heading-anchor {
+        font-size: 12px;
+        vertical-align: super;
+    }
+
+    .footnote {
+        text-decoration: none;
+        font-size: 10px;
+    }
+
+    body {
+        /** Tuned to perfection :) */
+        padding-left: 11px;
+    }
+}
+
+[role="doc-noteref"] {
+    /** Stop footnote links from increasing the line height. */
+    vertical-align: text-bottom;
+}
+
+.footnotes > ol:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+[role="doc-endnote"] > p {
+    margin: 0px;
+}
+
+[role="doc-endnote"]:target {
+    /** Take up the space for the border without displaying it. */
+    border: 4px solid transparent;
+    animation-duration: 1s;
+    animation-name: highlight_endnote;
+}
+
+@keyframes highlight_endnote {
+    50% {
+        border-color: rgb(50, 50, 130);
+    }
+
+    100% {
+        border-color: transparent;
+    }
+}
+
+/** Adjustments to the heading size for smaller devices. */
+@media screen and (max-width: 800px) {
+    h1 {
+
+    }
+}
+
+@media print {
+    /** Hide interactive elements (ToC link, anchors, and footnote buttons for printers. */
+    .page-toc-opener,
+    .post-heading-anchor,
+    .reversefootnote,
+    [role="doc-noteref"] {
+        display: none;
+    }
+
+    /** ...also force a page-break so footnotes are on a separate page. */
+    .footnotes {
+        page-break-before: always;
+    }
+}

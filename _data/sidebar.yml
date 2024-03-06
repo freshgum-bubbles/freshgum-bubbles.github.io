@@ -1,0 +1,27 @@
+services:
+  - name: codeberg
+    username: "@freshgum-bubbles"
+    link: https://codeberg.org/freshgum-bubbles
+  - name: github
+    username: "@freshgum-bubbles"
+    link: https://github.com/freshgum-bubbles
+  - name: matrix
+    username: "@freshgum_bubbles:mozilla.org"
+    link: https://matrix.to/#/@freshgum_bubbles:mozilla.org
+  - name: mastodon
+    username: "@delineation"
+    link: https://infosec.exchange/@delineation/
+  - name: npm
+    username: ~freshgum
+    link: https://npmjs.com/~freshgum
+  - name: email
+    username: freshgum dot bubbles at protonmail dot com
+    link: https://about.com
+
+avatar:
+  source: https://github.com/freshgum-bubbles.png
+  alt: "A deliberately badly-compressed picture of a green dinosaur with horns and a tail (the breed of which escapes me) in an attraction park."
+  width: 325
+  height: 325
+
+feed_link: /feed.xml

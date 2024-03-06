@@ -1,0 +1,62 @@
+<aside class="hsb">
+	{%- assign avatar = site.data.sidebar.avatar -%}
+
+	{%- if avatar -%}
+		<div class="hsb--avatar">
+			<img
+				class="hsb--avatar-image"
+				width="{{ avatar.width | default: 325 }}"
+				height="{{ avatar.height | default: 'auto' }}"
+				alt="{{ avatar.alt }}"
+				src="{{ avatar.source }}"
+			/>
+		</div>
+	{%- endif -%}
+
+	<div class="hsb--sections">
+		<section name="accounts">
+			<h2 class="hsb--title u__with-trailing-ellipsis">phonebook</h2>
+			<p class="hsb--paragraph">If you'd like to contact me, I'm best reached over Matrix.<br />I don't regularly use Mastodon.</p>
+			<table class="hsb--links">
+				{%- for item in site.data.sidebar.services -%}
+					<tr class="hsb--links-item">
+						{%- if false and item.octicon -%}
+							{%- assign size=24 -%}
+							<td class="hsb--link-icon" style="height: {{size}}px; width: {{size}}px;">
+								{% octicon {{ item.octicon }} height:24 width:24 class:"hsb--link-icon-octicon" %}
+							</td>
+						{%- endif -%}
+
+						<td class="hsb--link-title">{{ item.name }}</td>
+
+						<td class="hsb--link-username">
+							{%- if item.link -%}
+								<a class="hsb--link-title-anchor" href="{{ item.link }}">{{ item.username }}</a>
+							{%- else -%}
+								{{ item.name }}
+							{%- endif -%}
+						</td>
+					</tr>
+				{%- endfor -%}
+			</table>
+		</section>
+
+		{% comment %}
+		<!-- nothing to add to projects or snippets for now. -->
+		<section name="flavours">
+			<h2 class="hsb--title u__with-trailing-ellipsis">flavours</h2>
+			<p class="hsb--paragraph">Things I'm currently working on.</p>
+		</section>
+
+		<section name="snippets">
+			<h2 class="hsb--title u__with-trailing-ellipsis">experiments</h2>
+			<p class="hsb--paragraph">A collection of small, interactive webpages focused on experimenting with a certain technology.</p>
+		</section>
+		{% endcomment %}
+
+		<section name="feeds">
+			<h2 class="hsb--title u__with-trailing-ellipsis">feeds</h2>
+			<p class="hsb--paragraph">You can subscribe to this blog <a href="{{ site.data.sidebar.feed_link }}">here</a>.</p>
+		</section>
+	</div>
+</aside>

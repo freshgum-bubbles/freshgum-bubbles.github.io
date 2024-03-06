@@ -1,0 +1,41 @@
+<header>
+	<div class="header--title-and-bio">
+		{%- assign show_bio = site.theme_config.bio.show_on_homepage -%}
+
+		{%- if show_bio -%}
+			{%- assign title_class="home--title-with-bio" -%}
+		{%- else -%}
+			{%- assign title_class="" -%}
+		{%- endif -%}
+
+		<h1 class="{{ title_class }} home--title">{% comment %} {{ site.title }} {% endcomment %}in the life of freshgum...</h1>
+		{%- if show_bio -%}
+			<p class="home--bio">{{ site.theme_config.bio.text }}</p>
+		{%-endif-%}
+	</div>
+
+	{%- assign features = layout.features -%}
+	{%- if features contains "sidebar-hamburger-menu" -%}
+		<div class="hsb--toggle">
+			<!--
+				This is one of the only site-wide functions that requires JavaScript.
+				In short, this button needs to open the hsb--menu (in sidebar.html).
+				We can't use a <details> (grr) because the sidebar's not part of the header
+				(and we can't do that without experiencing layout problems).
+
+				Nevertheless, we can still make sure the experience works without scripting
+				by providing a fallback, so if JavaScript is disabled, the button opens a
+				page with only the sidebar partial in it -- an unfortunate consequence of this
+				is that the user would be navigated away, but as we're not positioning anything
+				with JavaScript, the user's back button (on Chromium and Firefox, anyway)
+				should restore them to their original position in the document via the back button.
+
+				-- freshgum
+			-->
+			<input aria-hidden="false" aria-disabled="false" type="checkbox" class="hsb--toggle-checkbox" id="hsb--toggle-checkbox" />
+			<label aria-label="Open hamburger menu" for="hsb--toggle-checkbox" class="hsb--toggle-label">
+				<span class="hsb--toggle-label-icon"></span>
+			</label>
+		</div>
+	{%- endif -%}
+</header>

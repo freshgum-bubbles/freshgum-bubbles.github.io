@@ -1,10 +1,13 @@
-<ul>
+<ul class="menu_list {{ include.list_class_name }}">
   {%-for item in include.collection-%}
-    <li>
+    <li class="menu_list_item {{ include.list_item_class_name }}">
     {%- if item.url -%}
-      <a href="{{ item.url }}">{{ item.title }}</a>
+      {%- if item.date -%}
+        <time class="menu_item_date" datetime="{{ item.date }}">{{ item.date | date: "%B %e, %Y" }}</time>
+      {%- endif -%}
+      <a href="{{ item.url }}" class="menu_item_link {{ include.list_item_anchor_class_name }}">{{ item.title }}</a>
     {%- else -%}
-      {{ item.title }}
+      <span class="menu_item_title">{{ item.title }}</span>
     {%- endif -%}
     </li>
 

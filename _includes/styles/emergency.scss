@@ -1,0 +1,44 @@
+/**
+ * This file contains "emergency CSS".
+ *
+ * "Emergency CSS" refers to styles which are inlined into every page's `<head>`.
+ * 
+ * This term originates from websites which include dark mode styles in an external CSS file,
+ * which causes an excruciating flash of white, unstyled content. 
+ * Typically, this sends visitors to the emergency room.
+ * As tempting as that is, UX must prevail!
+ *
+ * Remember to keep this file as small as possible :-)
+ */
+
+@import "theme";
+
+:root {
+  --bg-color-primary: rgb(237, 237, 237);
+  --fg-color-primary: rgb(14, 14, 14);
+  --fg-color-deemphasized: #686868;
+  --link-color: rgb(54, 54, 205);
+
+  --font-heading: #{$font-heading};
+  --font-auxiliary: #{$font-auxiliary};
+  --font-body: #{$font-body};
+}
+
+/** Change a few colours when dark mode is requested. */
+@media screen and (prefers-color-scheme: dark) {
+  :root {
+    --bg-color-primary: rgb(37, 37, 37);
+    --fg-color-primary: lightgrey;
+    --link-color: rgb(137, 162, 237);
+    --fg-color-deemphasized: #909090;
+  }
+}
+
+body {
+    color: var(--fg-color-primary);
+    background-color: var(--bg-color-primary);
+
+    font-size: 1.2em;
+    line-height: 1.6rem;
+    font-family: var(--font-body);
+}

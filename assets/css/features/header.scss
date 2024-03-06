@@ -1,0 +1,12 @@
+---
+---
+
+@import "breakpoints";
+
+@media screen and (max-width: $brk-x-sidebar) {
+    header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+}

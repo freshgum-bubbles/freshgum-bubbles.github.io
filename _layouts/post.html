@@ -1,15 +1,41 @@
 ---
 layout: default
+custom_css:
+  - "post"
 ---
 
-{%-include back_link.html-%}
+<header>
+  {%-include back_link.html-%}
+</header>
 
 <article>
-  <p class="post-meta">
-    <time datetime="{{ page.date }}">{{ page.date | date: site.theme_config.date_format }}</time>
-  </p>
-  
-  <h1>{{ page.title }}</h1>
+  <div class="post-leadin">
+    <h1 class="post-title">{{ page.title }}</h1>
 
-  {{ content }}
+    <div class="post-meta">
+      <time class="post-datetime" datetime="{{ page.date }}"
+        >{{ page.date | date: "%B %e, %Y" }}</time>
+      {% if page.toc %}
+        <span class="post-meta-separator">•</span>
+        <details class="page-toc-opener">
+          <summary>Table of contents</summary>
+          {{ page.content | toc_only }}
+        </details>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="post-content">
+    {%- if page.heading_anchors -%}
+      {% capture content %}
+        {% include vendor/anchor_headings.html html=content anchorBody="#" anchorClass="post-heading-anchor" %}
+      {% endcapture %}
+    {%- endif -%}
+
+    {{ content }}
+  </div>
+
+  <!-- custom css -->
+  {{ include.custom_css }} {%-if include.citations == true -%} {% bibliography
+  --cited_in_order %} {%-endif-%}
 </article>

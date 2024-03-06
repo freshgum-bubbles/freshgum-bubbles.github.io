@@ -1,0 +1,58 @@
+---
+---
+
+@import "fonts";
+@import "breakpoints";
+
+.home--title-with-bio {
+  margin-bottom: 0px;
+}
+
+.home--title {
+  margin-top: 0px;
+}
+
+.home--bio {
+  margin-top: 9px;
+  color: var(--fg-color-deemphasized);
+  font-family: var(--font-auxiliary);
+}
+
+.home--root {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.home--sidebar {
+  // display: none;
+}
+
+.home--root > .hsb {
+  margin-left: auto;
+}
+
+.home--post-list {
+  & .menu_item_date {
+    font-family: var(--font-auxiliary);
+    font-size: 13.5px;
+  }
+
+  gap: 25px;
+}
+
+h1 {
+  font-weight: lighter;
+  font-style: italic;
+}
+
+.home--post-list-item-anchor {
+  font-family: #{$font-heading};
+}
+
+@media screen and (min-width: $brk-medium) {
+	.page-container {
+		max-width: 1400px;
+    margin: auto;
+	}
+}

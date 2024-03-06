@@ -1,21 +1,36 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: "en" }}">
-  {%- include head.html -%}
-  <body a="{{ site.theme_config.appearance | default: "auto" }}">
-    <main class="page-content" aria-label="Content">
-      <div class="w">
+<html lang="{{ page.lang | default: 'en' }}">
+
+  {% comment %} {%- capture custom_css -%}{{ layout.custom_css | join: ',' }}{%- endcapture -%} {% endcomment %}
+  {%- assign features = layout.features %}
+
+  {%- include head.html custom_css=layout.custom_css features=features -%}
+
+  <!-- If we're dealing with a sidebar, we need to put the main container in flex via a class. -->
+  {%- capture container_classname -%}
+    {%- if features contains "sidebar" -%}with-sidebar{%- endif -%}
+  {%- endcapture -%}
+
+  <body>
+    <div class="page-container {{ container_classname }}">
+      <main class="page-content" aria-label="Content">
         {{ content }}
-      </div>
-    </main>
+      </main>
+
+      <!-- Special case: if the site is requesting a sidebar, we need to manually include it. -->
+      <!-- The sidebar partial already wraps itself in an <aside> -- no need to add another here. -->
+      {%- if features contains "sidebar" -%}
+        {%- include features/sidebar.html -%}
+      {%- endif -%}
+    </div>
 
     {%-if site.goat_counter and jekyll.environment == "production"-%}
       {%-include goat_counter.html-%}
     {%-endif-%}
 
-    {% if page.custom_js %}
-      {% for js_file in page.custom_js %}
+    {%- if page.custom_js -%}
+      {%- for js_file in page.custom_js -%}
         <script type="text/javascript" src="{{ site.baseurl }}/assets/js/{{ js_file }}.js"></script>
-      {% endfor %}
-    {% endif %}
-  </body>
+      {%- endfor -%}
+    {%- endif -%}
 </html>

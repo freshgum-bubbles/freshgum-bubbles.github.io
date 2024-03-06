@@ -1,0 +1,68 @@
+---
+---
+
+@use "sass:color";
+@import "breakpoints";
+
+$hsb-line-width: 3.2em;
+$hsb-line-height: 1px;
+$hsb-line-spacing: 17.5px;
+
+/**
+  * Hide the actual checkbox completely.
+  * We replace it with the <label>, which acts just like the checkbox.
+  * This means we don't have to battle with native checkbox styles.
+  */
+.hsb--toggle-checkbox {
+    display: none;
+}
+
+.hsb--toggle-label {
+    padding: 25px 15px 25px 15px;
+    border-radius: 50%;
+    cursor: pointer;
+    
+    // padding: 20px;
+    // border-radius: 50%;
+    background-color: white;
+
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    // position: relative;
+
+    height: calc($hsb-line-spacing * 2);
+    width: $hsb-line-width;
+}
+
+.hsb--toggle-label-icon {
+    &::after, &::before {
+        content: '';
+    }
+
+    &, &::after, &::before {
+        display: block;
+        width: $hsb-line-width;
+        height: $hsb-line-height;
+        background-color: black;
+
+        margin: 0;
+        padding: 0;
+        user-select: none;
+    }
+
+    &::after {
+        margin-top: calc($hsb-line-spacing - $hsb-line-height);
+    }
+
+    &::before {
+        margin-top: calc($hsb-line-spacing - $hsb-line-height);
+    }
+}
+
+@media screen and (max-width: $brk-x-sidebar) {
+    .hsb--toggle-label {
+        display: flex;
+    }
+}

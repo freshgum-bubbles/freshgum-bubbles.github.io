@@ -1,13 +1,24 @@
 ---
 layout: default
+custom_css:
+  - home
+features:
+  - sidebar
+  - sidebar-hamburger-menu
+  - header
 ---
-<header>
-  <h1>{{ site.title }}</h1>
-  {%-if site.theme_config.show_description-%}
-    <p>{{ site.description }}</p>
-  {%-endif-%}
-</header>
 
-{%-include menu_item.html collection=site.data.menu.entries-%}
+{%- if layout.features contains "header" -%}
+	{%- include features/header.html -%}
+{%- endif -%}
+
+<div class="home--root">
+	<section class="home--feed">
+		{%-include menu_item.html collection=site.posts list_class_name="home--post-list"
+		list_item_class_name="home--post-list-item" list_item_anchor_class_name="home--post-list-item-anchor" -%}
+	</section>
+
+	{% comment %} <section class="home--sidebar">{%- include sidebar.html -%}</section> {% endcomment %}
+</div>
 
 {{ content }}

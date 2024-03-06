@@ -1,0 +1,18 @@
+---
+---
+
+/**
+ * Find enclosed printer-specific styles which override the defaults. 
+ * This is loaded as media="print", so no need for media queries.
+ */
+:root {
+    --bg-color-primary: white;
+    --fg-color-primary: black;
+}
+
+figure,
+table,
+picture {
+    page-break-inside: avoid;
+}
+

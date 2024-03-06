@@ -1,4 +1,95 @@
 ---
 ---
 
-@import "no-style-please";
+/**
+ * Note: This file *always* comes after the emergency CSS.
+ * It relies on variables defined in that file to function.
+ */
+
+@import 'fonts';
+@import 'breakpoints';
+@import 'colors';
+
+.page-content {
+	/** consume 100% width of body / html hierarchy */
+	width: 100%;
+}
+
+/* bindings for theme variables */
+a {
+	color: var(--link-color);
+}
+
+body {
+	/** Start off with a small margin for smaller screens. */
+	margin: 1rem 5px 5px 5px;
+}
+
+@media screen {
+	body {
+		/** Screens need padding, printers add their own. */
+		padding-left: 5px;
+	}
+}
+
+main {
+	width: fit-content;
+	max-width: 850px;
+}
+
+/** Add padding to the page for larger screens. */
+@media screen and (min-width: $brk-medium) {
+	.page-container {
+		padding: 3rem 0px 15px 15px;
+	}
+
+	body {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+}
+
+h1 {
+	line-height: 2.5rem;
+	font-size: 42px;
+	letter-spacing: -0.02em;
+	font-family: var(--font-heading);
+}
+
+hr {
+	/* text-align: center; */
+	border: 0;
+	background-color: var(--fg-color-deemphasized);
+	height: 0.05em;
+	width: 100%;
+}
+
+table,
+th,
+td {
+	border: thin solid black;
+	border-collapse: collapse;
+}
+
+/*# sourceMappingURL=main.css.map */
+
+/* menu item styling */
+.menu_list {
+	display: flex;
+	flex-direction: column;
+	list-style-type: none;
+	gap: 15px;
+	padding-left: 0px;
+}
+
+.menu_item_date {
+	display: block;
+}
+
+.u__with-trailing-ellipsis::after {
+	// content: "…";
+	content: '...';
+	color: $fg-color-deemphasized-x;
+	letter-spacing: 5px;
+	padding-left: 6px;
+}

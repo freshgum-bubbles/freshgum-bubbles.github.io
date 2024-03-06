@@ -1,27 +1,54 @@
-title: no style, please! # name of the site
-author: Riccardo Graziosi # name of site's author
+title: "freshgum's page" # name of the site
+author: freshgum bubbles # name of site's author
 email: riccardo.graziosi97@gmail.com # email of site's author
-url: https://riggraz.dev # root address of the site
-baseurl: "/no-style-please" # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
+url: https://freshgum.github.io # root address of the site
+baseurl: "/" # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
 description: > # description of the site (multiple lines allowed)
   A (nearly) no-CSS, fast, minimalist Jekyll theme.
 
-permalink: /:slug.html
+collections_dir: collections
+collections:
+  posts:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      # Enable the TOC for every post.
+      toc: true
+      heading_anchors: true
+
+# permalink: /slug.html
 
 favicon: "logo.png" # name+extension of favicon (which must be put on the root folder)
 # goat_counter: "yoursitename" # put your GoatCounter name if you want to use GoatCounter analytics
 
-theme: no-style-please # if you are using GitHub Pages, change it to remote_theme: riggraz/no-style-please
+# theme: no-style-please # if you are using GitHub Pages, change it to remote_theme: riggraz/no-style-please
 
 theme_config:
   appearance: "auto" # can be "light", "dark" or "auto"
-  back_home_text: ".." # customize text for homepage link in post layout
+  back_home_text: "to be a freshgum" # customize text for homepage link in post layout
   date_format: "%Y-%m-%d" # customize how date is formatted
-  show_description: false # show blog description in home page
+  show_description: true # show blog description in home page
+  bio:
+    show_on_homepage: true
+    text: "Privacy researcher, programmer, web developer. Nuance is paramount."
 
 sass:
-  style: :compressed
+  # style: compressed
+  sass_dir: _sass
 
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-scholar
+  - jekyll-octicons
+  - jekyll-toc
+  - jekyll-sass-converter
+
+exclude:
+  - .devbox
+  - devbox.json
+  - devbox.lock
+  - "*.gemspec"

@@ -1,0 +1,102 @@
+---
+---
+
+@import "breakpoints";
+@import "fonts";
+@import "colors";
+
+@media print {
+    .hsb {
+        display: none;
+    }
+}
+
+.page-container.with-sidebar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.hsb--title {
+    margin-top: 0px;
+    font-family: 'IBM Plex Serif';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 30px;
+}
+
+.hsb--links {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 0 0.5em;
+}
+
+.hsb--links,
+.hsb--links tr,
+.hsb--links td {
+    border: none;
+    // border-color: red;
+}
+
+.hsb--link-title-anchor {
+    text-decoration: none;
+    font-family: $font-auxiliary;
+    color: $fg-color-secondary-link;
+}
+
+.hsb--link-title {
+    text-align: right;
+    padding-right: 10px;
+    font-family: $font-heading;
+}
+
+.hsb--avatar-image {
+    border-radius: 1.25em;
+}
+
+/** Add padding to individual sections of the sidebar. */
+.hsb--sections {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hsb--avatar {
+    padding-bottom: 20px;
+}
+
+.hsb--paragraph {
+    font-size: 15.5px;
+}
+
+/** For larger screens, we can force the usernames onto the same line -- this looks nicer. */
+@media screen and (min-width: 1100px) {
+    .hsb--link-username {
+        white-space: nowrap;
+    }
+
+    .hsb--paragraph {
+        max-width: 428px;
+    }
+}
+
+/**
+ * Regardless of the set avatar size, force a reduction in size when the viewport narrows.
+ */
+@media screen and (max-width: 1100px) {
+    .hsb--avatar-image {
+        width: 140px;
+        height: auto;
+    }
+}
+
+/** Completely disable the sidebar for smaller devices. */
+@media screen and (max-width: $brk-x-sidebar) {
+    /**
+     * Allow overriding whether the sidebar is hidden.
+     * This is used by the JavaScript to implement the interactive hamburger menu.
+     */
+    .hsb:not(.hsb--force-show) {
+        display: none;
+    }
+}
