@@ -10,3 +10,4 @@ vendor/
 .devbox
 
 collections/_drafts
+!_includes/vendor
