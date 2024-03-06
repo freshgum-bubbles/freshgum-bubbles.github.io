@@ -45,6 +45,7 @@ plugins:
   - jekyll-scholar
   - jekyll-octicons
   - jekyll-toc
+  - jekyll-assets
   - jekyll-sass-converter
 
 exclude:
