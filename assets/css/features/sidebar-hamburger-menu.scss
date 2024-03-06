@@ -61,8 +61,9 @@ $hsb-line-spacing: 17.5px;
     }
 }
 
-@media screen and (max-width: $brk-x-sidebar) {
-    .hsb--toggle-label {
-        display: flex;
-    }
-}
+// Disable the hamburger menu for now.
+// @media screen and (max-width: $brk-x-sidebar) {
+//     .hsb--toggle-label {
+//         display: flex;
+//     }
+// }
