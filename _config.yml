@@ -4,7 +4,7 @@ email: riccardo.graziosi97@gmail.com # email of site's author
 url: https://freshgum.github.io # root address of the site
 baseurl: "/" # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
 description: > # description of the site (multiple lines allowed)
-  A (nearly) no-CSS, fast, minimalist Jekyll theme.
+  Privacy researcher, programmer, web developer. Nuance is paramount.
 
 collections_dir: collections
 collections:
@@ -45,6 +45,7 @@ jekyll-minifier:
 
 plugins:
   - jekyll-feed
+  - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-scholar
   - jekyll-octicons
