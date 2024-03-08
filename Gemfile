@@ -19,5 +19,6 @@ gem 'jekyll-sitemap', group: :jekyll_plugins
 gem 'jekyll-minifier', group: :jekyll_plugins
 
 gem "racc"
+gem "mini_magick"
 
 gemspec
