@@ -2,6 +2,7 @@
 ---
 
 @import "breakpoints";
+@import "fonts";
 
 h2,
 h3,
@@ -9,6 +10,7 @@ h4,
 h5,
 h6 {
     margin-top: 40px;
+    margin-bottom: 0px;
     font-family: "IBM Plex Sans Condensed";
 }
 
@@ -29,7 +31,7 @@ h1 {
 }
 
 main {
-    font-family: "IBM Plex Serif";
+    font-family: $font-body-post;
     max-width: 800px;
 }
 
@@ -131,14 +133,13 @@ main {
 }
 
 .post-content {
-    line-height: 1.5rem;
-
-    font-size: 19.5px;
-    line-height: 1.85rem;
+    font-size: 19px;
+    line-height: 2.2rem;
+    letter-spacing: 0.001;
 }
 
 .post-content > p {
-    // max-width: 600px;
+    padding-top: 10px;
 }
 
 .post-heading-anchor {

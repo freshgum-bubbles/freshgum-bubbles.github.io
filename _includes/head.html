@@ -27,12 +27,12 @@
     This means that, as opposed to starting out under the assumption that
     JavaScript is enabled, we begin by assuming it's not present, and then
     adding auxilliary functionality to the page if it is.
-    
+
     As a general rule, we've made an effort to ensure that each function
     which requires JavaScript has an appropriate fallback which works when
     it isn't enabled or, if that's not possible, the function is hidden.
 
-    N.B. It should be noted that u__ is considered a reserved prefix for 
+    N.B. It should be noted that u__ is considered a reserved prefix for
     site-wide utility classes.
     Think of "utility classes" as basically a very small subset of Tailwind.
   -->
@@ -57,10 +57,10 @@
     {%- endfor -%}
   {%- endif -%}
 
-  <!-- 
+  <!--
     The default.html template may give us a list of features which this page uses.
     Each feature may be associated with a list of styles: for example, the "sidebar"
-    feature is associated with the "sidebar" style.  These styles are names / sub-paths 
+    feature is associated with the "sidebar" style.  These styles are names / sub-paths
     of CSS files under the /assets/css/ folder.
 
     Here, we just need to iterate over those features and emit a stylesheet reference
@@ -83,4 +83,5 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 </head>
