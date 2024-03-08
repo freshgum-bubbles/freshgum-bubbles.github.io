@@ -132,13 +132,10 @@ main {
     /* max-width: 850px; */
 }
 
-.post-content {
+.post-content > p {
     font-size: 19px;
     line-height: 2.2rem;
     letter-spacing: 0.001;
-}
-
-.post-content > p {
     padding-top: 10px;
 }
 
