@@ -10,7 +10,7 @@ overall mental health.
 
 However, as [Monty Python taught us][monty-python-always-look-on-the-bright-side-of-life],
 we should always look on the bright side of life.
-Therefore, I'll focus on my new blog!I'm very pleased that I now find myself
+Therefore, I'll focus on my new blog! I'm very pleased that I now find myself
 with a brand new platform to write and share my thoughts on various topics
 and things I think others may find interesting too.
 
