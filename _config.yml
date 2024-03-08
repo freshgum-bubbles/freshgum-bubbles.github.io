@@ -39,6 +39,11 @@ sass:
   # style: compressed
   sass_dir: _sass
 
+assets:
+  compression: true
+  sources:
+    - assets/images
+
 jekyll-minifier:
   uglifier_args:
     harmony: true
