@@ -53,7 +53,6 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
   - jekyll-scholar
-  - jekyll-octicons
   - jekyll-toc
   - jekyll-assets
   - jekyll-minifier
