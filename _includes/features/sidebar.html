@@ -2,11 +2,15 @@
 	{%- assign avatar = site.data.sidebar.avatar -%}
 
 	{%- if avatar -%}
+		{%- assign avatar_w = avatar.width | default: 325 -%}
+		{%- assign avatar_h = avatar.height | default: 325 -%}
+
+		<!-- | asset:"@magick:quality=85,crop={{ avatar_w }},{{ avatar_h }}" }} -->
 		<div class="hsb--avatar">
 			<img
 				class="hsb--avatar-image"
-				width="{{ avatar.width | default: 325 }}"
-				height="{{ avatar.height | default: 'auto' }}"
+				width="{{ avatar_w }}"
+				height="{{ avatar_h }}"
 				alt="{{ avatar.alt }}"
 				src="{{ avatar.source }}"
 			/>
