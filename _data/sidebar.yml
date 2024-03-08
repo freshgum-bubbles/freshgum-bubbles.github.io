@@ -19,7 +19,7 @@ services:
     link: "#"
 
 avatar:
-  source: https://github.com/freshgum-bubbles.png
+  source: /assets/images/avatar-fw.jpg
   alt: "A deliberately badly-compressed picture of a green dinosaur with horns and a tail (the breed of which escapes me) in an attraction park."
   width: 325
   height: 325
