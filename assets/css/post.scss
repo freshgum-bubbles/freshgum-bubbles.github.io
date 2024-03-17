@@ -49,11 +49,10 @@ main {
 .post-title {
     margin-bottom: 5px;
 
-    /* todo: light mode */
-    color: var(--fg-color-deemphasized);
-
-    font-style: unset;
-    font-weight: 500;
+    font-size: 40px;
+    font-weight: 200;
+    font-style: italic;
+    color: var(--fg-secondary-text-highlight);
 }
 
 /** Table of Contents styling */
@@ -86,11 +85,14 @@ main {
 
 .post-meta {
     margin-top: 0px;
-    font-family: monospace;
 
     /** Start off as a vertical list for smaller devices. */
     display: flex;
     flex-direction: column;
+
+    font-family: IBM Plex Sans Condensed;
+    opacity: 75%;
+    font-size: 15px;
 }
 
 .post-meta-separator {
