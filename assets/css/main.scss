@@ -73,6 +73,16 @@ td {
 	border-collapse: collapse;
 }
 
+/** Hide anything which requires JS. */
+.u__js_required {
+	display: none;
+}
+
+/** ...but if JS is enabled, show it! */
+.u__js_enabled .u__js_required {
+	display: var(--display, block);
+}
+
 /*# sourceMappingURL=main.css.map */
 
 /* menu item styling */
