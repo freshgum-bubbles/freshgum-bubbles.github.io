@@ -2,9 +2,36 @@
   {%-for item in include.collection-%}
     <li class="menu_list_item {{ include.list_item_class_name }}">
     {%- if item.url -%}
-      {%- if item.date -%}
-        <time class="menu_item_date" datetime="{{ item.date }}">{{ item.date | date: "%B %e, %Y" }}</time>
-      {%- endif -%}
+      <div class="menu_item_meta {{ include.list_item_meta_class_name }}">
+        {%- if item.date -%}
+          <time class="menu_item_date" datetime="{{ item.date }}">{{ item.date | date: "%B %e, %Y" }}</time>
+        {%- endif -%}
+
+        {%- if include.add_meta_separator -%}
+          <span class="menu_item_meta--separator {{ include.list_item_meta_separator_class_name }}" aria-hidden="true">•</span>
+        {%- endif -%}
+        <!--
+            If we've been told to estimate Time To Read, do it.  Also allow individual posts to opt-out.
+            This might be useful in future.
+        -->
+        {%- if include.estimate_ttr and item.estimate_ttr != false -%}
+          <!-- The ordinary person can read at an average of 200wpm. -->
+          {%- assign estimated_wpm_rate = 200 -%}
+
+          <!-- Here's the heart of the estimated reading time algorithm. -->
+          {%- assign estimated_time = item.content | number_of_words | divided_by: estimated_wpm_rate | at_least: 1 -%}
+          <span class="menu_item_ttr {{ include.list_item_meta_ttr_class_name }}">
+            <span class="menu_item_ttr--estimation">{{ estimated_time }}</span>
+            <span class="menu_item_ttr--suffix">
+              {%- if estimated_time == 1 -%}
+                minute
+              {%- else -%}
+                minutes
+              {%- endif -%}
+            </span>
+          </span>
+        {%- endif -%}
+      </div>
       <a href="{{ item.url }}" class="menu_item_link {{ include.list_item_anchor_class_name }}">{{ item.title }}</a>
     {%- else -%}
       <span class="menu_item_title">{{ item.title }}</span>

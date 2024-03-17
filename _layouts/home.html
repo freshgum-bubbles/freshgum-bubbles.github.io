@@ -14,8 +14,17 @@ features:
 
 <div class="home--root">
 	<section class="home--feed">
-		{%-include menu_item.html collection=site.posts list_class_name="home--post-list"
-		list_item_class_name="home--post-list-item" list_item_anchor_class_name="home--post-list-item-anchor" -%}
+		{%-include menu_item.html
+			estimate_ttr=true
+			collection=site.posts
+			add_meta_separator=true
+			list_class_name="home--post-list"
+			list_item_class_name="home--post-list-item"
+			list_item_meta_class_name="home--post-list-item__meta"
+			list_item_anchor_class_name="home--post-list-item-anchor"
+			list_item_meta_ttr_class_name="home--post-list-item__meta-ttr"
+			list_item_meta_separator_class_name="home--post-list-item__meta-separator"
+		-%}
 	</section>
 
 	{% comment %} <section class="home--sidebar">{%- include sidebar.html -%}</section> {% endcomment %}

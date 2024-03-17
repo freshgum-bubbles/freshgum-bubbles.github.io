@@ -34,12 +34,34 @@
 }
 
 .home--post-list {
-  & .menu_item_date {
+  & .menu_item_date,
+  & .home--post-list-item__meta {
     font-family: var(--font-auxiliary);
     font-size: 13.5px;
   }
 
   gap: 25px;
+}
+
+.home--post-list-item__meta {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.home--post-list-item__meta-ttr {
+  opacity: 75%;
+}
+
+.home--post-list-item__meta-separator {
+  opacity: 45%;
+}
+
+@media screen and (prefers-contrast: more) {
+  .home--post-list-item__meta-ttr,
+  .home--post-list-item__meta-separator {
+    opacity: 100%;
+  }
 }
 
 h1 {
