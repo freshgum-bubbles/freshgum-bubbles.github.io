@@ -36,6 +36,14 @@ $light-fg-color-primary-link: rgb(51, 115, 255);
 /** Foreground (Secondary, Links) */
 $light-fg-color-secondary-link: rgb(91, 125, 198);
 
+/**
+ * Foreground (Secondary, Highlight)
+ * =================================
+ * A colour which effectively complements the background without drawing too
+ * much attention from it -- this is used for post headings.
+ */
+$light-fg-secondary-text-highlight: $light-fg-color-deemphasized;
+
 $light-link-color: rgb(65, 65, 167);
 
 $light-shadow-color-primary: color.scale($light-bg-color-primary, $blackness: 100%);

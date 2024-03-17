@@ -25,6 +25,7 @@
   --fg-color-primary: #{$light-fg-color-primary};
   --fg-color-deemphasized: #{$light-fg-color-deemphasized};
   --fg-color-deemphasized-x: #{$light-fg-color-deemphasized-x};
+  --fg-secondary-text-highlight: #{$light-fg-secondary-text-highlight};
   --shadow-color-primary: #{$light-shadow-color-primary};
   --link-color: #{$light-link-color};
 
@@ -39,6 +40,7 @@
     --fg-color-primary: #{$dark-fg-color-primary};
     --fg-color-deemphasized: #{$dark-fg-color-deemphasized};
     --fg-color-deemphasized-x: #{$dark-fg-color-deemphasized-x};
+    --fg-secondary-text-highlight: #{$dark-fg-secondary-text-highlight};
     --shadow-color-primary: #{$dark-shadow-color-primary};
     --link-color: #{$dark-link-color};
   }

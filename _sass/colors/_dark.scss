@@ -36,6 +36,14 @@ $dark-fg-color-primary-link: rgb(51, 115, 255);
 /** Foreground (Secondary, Links) */
 $dark-fg-color-secondary-link: rgb(91, 125, 198);
 
+/**
+ * Foreground (Secondary, Highlight)
+ * =================================
+ * A colour which effectively complements the background without drawing too
+ * much attention from it -- this is used for post headings.
+ */
+$dark-fg-secondary-text-highlight: #947871;
+
 $dark-link-color: rgb(137, 162, 237);
 
 $dark-shadow-color-primary: color.scale($dark-bg-color-primary, $blackness: 50%);
