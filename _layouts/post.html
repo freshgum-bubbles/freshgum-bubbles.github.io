@@ -15,7 +15,11 @@ custom_css:
     <div class="post-meta">
       <time class="post-datetime" datetime="{{ page.date }}"
         >{{ page.date | date: "%B %e, %Y" }}</time>
-      {% if page.toc %}
+      {%- capture toc -%}
+        {{ page.content | toc_only }}
+      {%- endcapture -%}
+      <!-- We're currently unable to omit TOC if it's empty.  Workaround required... -->
+      {% if page.toc and toc != "" %}
         <span class="post-meta-separator">•</span>
         <details class="page-toc-opener">
           <summary>Table of contents</summary>
