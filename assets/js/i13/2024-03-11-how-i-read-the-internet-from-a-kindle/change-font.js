@@ -47,8 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let usingProposedFont = false;
 
     // A human-readable form of the original font's name.
-    // If the original font could n
-    const HR_ORIGINAL_FONT_NAME = originalFont ?? ORIGINAL_FONT_NAME_FALLBACK;
+    // If the original font could not be grabbed, just use a fallback placeholder.
+    const HR_ORIGINAL_FONT_NAME = originalFont || ORIGINAL_FONT_NAME_FALLBACK;
 
     // The CSS stylesheet to change the document to the proposed font.
     const PROPOSED_FONT_CSS = `.post-content { font-family: ${PROPOSED_FONT}; }`;
