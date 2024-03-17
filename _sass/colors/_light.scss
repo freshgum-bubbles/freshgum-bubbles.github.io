@@ -1,16 +1,18 @@
+@use "sass:color";
+
 /**
  * Background (Primary)
  * ====================
  * The colour of all pages' backgrounds.
  */
-$bg-color-primary: rgb(237, 237, 237);
+$light-bg-color-primary: rgb(255, 238, 221);
 
 /**
  * Foreground (Primary)
  * ====================
  * The colour of the text on individual pages.
  */
-$fg-color-primary: rgb(14, 14, 14);
+$light-fg-color-primary: rgb(14, 14, 14);
 
 /**
  * Foreground (Deemphasized)
@@ -18,9 +20,9 @@ $fg-color-primary: rgb(14, 14, 14);
  * The colour of deemphasized items.
  * For post pages, this is used as the colour for the post's title heading.
  */
-$fg-color-deemphasized: #686868;
+$light-fg-color-deemphasized: #686868;
 
-$fg-color-deemphasized-x: #aeaeae;
+$light-fg-color-deemphasized-x: #aeaeae;
 
 /**
  * Foreground (Primary, Links)
@@ -29,8 +31,11 @@ $fg-color-deemphasized-x: #aeaeae;
  * This colour should be reserved for links which navigate to the primary
  * focus of the page.
  */
-$fg-color-primary-link: rgb(51, 115, 255);
+$light-fg-color-primary-link: rgb(51, 115, 255);
 
-$fg-color-secondary-link: rgb(91, 125, 198);
+/** Foreground (Secondary, Links) */
+$light-fg-color-secondary-link: rgb(91, 125, 198);
 
-$link-color: blue;
+$light-link-color: rgb(65, 65, 167);
+
+$light-shadow-color-primary: color.scale($light-bg-color-primary, $blackness: 100%);

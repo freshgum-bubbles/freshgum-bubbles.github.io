@@ -13,26 +13,37 @@
 
 @import "theme";
 
+/**
+ * What follows is a bunch of bindings from the SCSS theme variables
+ * to native CSS variables.  This is THE ONLY PLACE where the raw
+ * SCSS variables should be accessed; accessing them anywhere else
+ * will not ensure that the appropriate one is used for the user's
+ * chosen color mode.
+ */
 :root {
-  --bg-color-primary: rgb(237, 237, 237);
-  --fg-color-primary: rgb(14, 14, 14);
-  --fg-color-deemphasized: #686868;
-  --link-color: rgb(54, 54, 205);
+  --bg-color-primary: #{$light-bg-color-primary};
+  --fg-color-primary: #{$light-fg-color-primary};
+  --fg-color-deemphasized: #{$light-fg-color-deemphasized};
+  --fg-color-deemphasized-x: #{$light-fg-color-deemphasized-x};
+  --shadow-color-primary: #{$light-shadow-color-primary};
+  --link-color: #{$light-link-color};
 
   --font-heading: #{$font-heading};
   --font-auxiliary: #{$font-auxiliary};
   --font-body: #{$font-body};
 }
 
-/** Change a few colours when dark mode is requested. */
 @media screen and (prefers-color-scheme: dark) {
   :root {
-    --bg-color-primary: rgb(27, 27, 27);
-    --fg-color-primary: rgb(231, 231, 231);
-    --link-color: rgb(137, 162, 237);
-    --fg-color-deemphasized: #909090;
+    --bg-color-primary: #{$dark-bg-color-primary};
+    --fg-color-primary: #{$dark-fg-color-primary};
+    --fg-color-deemphasized: #{$dark-fg-color-deemphasized};
+    --fg-color-deemphasized-x: #{$dark-fg-color-deemphasized-x};
+    --shadow-color-primary: #{$dark-shadow-color-primary};
+    --link-color: #{$dark-link-color};
   }
 }
+/** END bindings. */
 
 body {
     color: var(--fg-color-primary);

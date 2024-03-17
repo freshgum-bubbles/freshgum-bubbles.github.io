@@ -2,8 +2,7 @@
 ---
 
 @import "breakpoints";
-@import "fonts";
-@import "colors";
+@import "theme";
 
 @media print {
     .hsb {
@@ -40,14 +39,14 @@
 
 .hsb--link-title-anchor {
     text-decoration: none;
-    font-family: $font-auxiliary;
-    color: $fg-color-secondary-link;
+    font-family: var(--font-auxiliary);
+    color: var(--fg-color-deemphasized);
 }
 
 .hsb--link-title {
     text-align: right;
     padding-right: 10px;
-    font-family: $font-heading;
+    font-family: var(--font-heading);
 }
 
 .hsb--avatar-image {
