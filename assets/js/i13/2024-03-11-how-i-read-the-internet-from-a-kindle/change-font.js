@@ -1,3 +1,5 @@
+
+// @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
 document.addEventListener('DOMContentLoaded', () => {
     const PROPOSED_FONT = "IBM Plex Serif";
 
@@ -87,3 +89,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $$currentFontName.textContent = HR_ORIGINAL_FONT_NAME;
 });
+// @license-end
