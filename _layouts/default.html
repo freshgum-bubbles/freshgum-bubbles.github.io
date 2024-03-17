@@ -29,8 +29,22 @@
     {%-endif-%}
 
     {%- if page.custom_js -%}
-      {%- for js_file in page.custom_js -%}
-        <script type="text/javascript" src="{{ site.baseurl }}/assets/js/{{ js_file }}.js"></script>
+      {%- for mod in page.custom_js -%}
+        <!-- We choose 11 here because that's the length of "/_includes/". -->
+        {%- assign beginning_of_path = mod.path | split: "" | slice: 0, 11 -%}
+        {%-if mod.inline and beginning_of_path == "/_includes/" -%}
+          <!--
+            If the first character is a forward slash, it's a local file. We can inline those.
+            Note that if you try to include a file outside of _includes, this won't work.
+            No, there are no ways around this.  Yes, this is annoying.
+          -->
+          <script type="text/javascript">
+            {%- include {{ mod.path }} -%}
+          </script>
+        {%- else -%}
+          <!-- Otherwise, let's just reference the script. -->
+          <script type="text/javascript" src="{{ mod.path }}"></script>
+        {%- endif -%}
       {%- endfor -%}
     {%- endif -%}
 </html>
