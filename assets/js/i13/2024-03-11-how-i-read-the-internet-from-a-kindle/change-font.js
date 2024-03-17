@@ -35,7 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const { family } = font;
                 if (fontChoices.includes(family)) {
                     // Strip quotes (if they exist).
-                    return family.match(/^(?:'|")(.+)(?:'|")$/u)?.[1] ?? family;
+                    const match = family.match(/^(?:'|")(.+)(?:'|")$/u);
+                    return match ? match[1] : family;
                 }
             }
         } catch (error) {
