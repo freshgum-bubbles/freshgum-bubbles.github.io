@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="{{ page.lang | default: 'en' }}">
-
   {% comment %} {%- capture custom_css -%}{{ layout.custom_css | join: ',' }}{%- endcapture -%} {% endcomment %}
   {%- assign features = layout.features %}
 
@@ -47,4 +46,37 @@
         {%- endif -%}
       {%- endfor -%}
     {%- endif -%}
+
+    {%- assign applicable_tweaks = site.data.devmode_tweaks.layouts[page.layout] -%}
+    {%- if jekyll.env != 'production' and site.theme_config.devmode_tweaks and applicable_tweaks -%}
+      <!-- Devmode tweaks! See See _data/devmode_tweaks.yml for details. -->
+      {%- for tweak in applicable_tweaks -%}
+        {%- assign type = tweak.type -%}
+        {%- assign path = tweak.path -%}
+        {%- assign loc  = tweak.location -%}
+
+        {%- if loc != "default" and loc != nil -%}
+          <!-- SKIP tweak with path <{{ path }}> due to non-default location. -->
+          {% comment %}
+            Anything with a non-default location value is skipped.
+            This allows for manual placement by individual layouts.
+          {% endcomment %}
+          {% continue %}
+        {%- endif -%}
+
+        {%- capture plaintext -%}
+          {%- include {{ path }} -%}
+        {%- endcapture -%}
+
+        {% if type == 'css' %}
+          <style data-path="{{ path }}">{{ plaintext }}</style>
+        {% else if type == 'scss' %}
+          <style data-path="{{ path }}">{{ plaintext | scssify }}</style>
+        {% else if type == 'js' %}
+          <script type="text/javascript" data-path="{{ path }}">{{ plaintext }}</script>
+        {% endif %}
+      {%- endfor -%}
+    {%- endif -%}
+  </body>
+
 </html>

@@ -1,0 +1,18 @@
+# Devmode tweaks are a collection of small tweaks applied to individual layouts
+# only when the site is in development mode.
+# Tweaks are applied (via the default layout) in the order they're set here.
+
+layouts:
+  # [layout_name]: tweaks.
+  # "type" is either:
+  #  - scss:    converted to CSS and inlined
+  #  - js:      inline script
+  #  - css:     inline style
+  # "location" is either:
+  #  - default: placed at end of body by default handler
+  #  - *:       requires manual placement
+  home:
+    - path: devmode_tweaks/layouts/home/styles/draft-post.scss
+      type: scss
+    - path: devmode_tweaks/layouts/home/styles/invert-avatar.scss
+      type: scss

@@ -27,6 +27,9 @@ favicon: "logo.png" # name+extension of favicon (which must be put on the root f
 # theme: no-style-please # if you are using GitHub Pages, change it to remote_theme: riggraz/no-style-please
 
 theme_config:
+  # Devmode tweaks! See See _data/devmode_tweaks.yml for details.
+  devmode_tweaks: true
+
   meta_theme_color: true
 
   # Darken drafted posts on the home-screen in development.

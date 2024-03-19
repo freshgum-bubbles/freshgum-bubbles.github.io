@@ -15,15 +15,8 @@ features:
 <div class="home--root">
 	<section class="home--feed">
 		{%- if jekyll.env != 'production' and site.theme_config.theme_drafted_posts -%}
+			<!-- Class styles in <_includes/devmode_tweaks/layouts/home/styles/draft-post.scss> -->
 			{%- assign list_item_draft_class_name='home--post-list-item-draft' -%}
-
-			<!-- Custom style for drafted items -->
-			<style>
-				{%- capture draft_styles -%}
-				  {% include styles/draft-post.scss %}
-				{%- endcapture -%}
-				{{ draft_styles | scssify }}
-			</style>
 		{%- else -%}
 			{%- assign list_item_draft_class_name='' %}
 		{%- endif -%}

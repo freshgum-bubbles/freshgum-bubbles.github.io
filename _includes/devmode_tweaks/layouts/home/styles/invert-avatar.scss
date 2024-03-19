@@ -1,0 +1,10 @@
+.hsb--avatar-image {
+    // Grayscale the image to make it easier to differentiate devmode from prod.
+    // Best solution as straying too far from prod's design makes devmode useless.
+    filter: grayscale(100%);
+
+    &:hover,
+    &:focus {
+        filter: none;
+    }
+}
