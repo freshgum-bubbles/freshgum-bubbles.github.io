@@ -42,6 +42,23 @@
     // TODO: should we add code for beforeprint here?
   </script>
 
+  <!--
+    Meta theme support[1] lives here.
+
+    This essentially changes the colour of the top chrome on mobile,
+    so it matches the background of the page.
+
+    This will work as long as we keep this lined up with whatever background
+    we're using for the page.
+
+    [1]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color
+  -->
+  {%- if site.theme_config.meta_theme_color -%}
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="{{ site.data.colors.themes.dark.background }}" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="{{ site.data.colors.themes.light.background }}" />
+  {%- endif -%}
+
+
   {%-seo title=false-%}
   {%-feed_meta-%}
 
