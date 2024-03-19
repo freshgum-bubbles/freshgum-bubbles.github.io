@@ -11,5 +11,8 @@
 
     "material-icon-theme.files.associations": {
         "*.html": "html"
+    },
+    "[liquid]": {
+        "editor.formatOnSave": true
     }
 }
