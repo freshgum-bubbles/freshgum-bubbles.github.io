@@ -41,7 +41,17 @@
     text-decoration: none;
     font-family: var(--font-auxiliary);
     color: var(--fg-color-deemphasized);
+
+    transition: color 0.15s cubic-bezier(0.92, 1, 0.44, 1.03),
+    opacity 0.25s linear;
+    &:focus, &:hover {
+        color: var(--link-color);
+    }
 }
+
+// .hsb--links:has(tr:hover, .hsb--link-title-anchor:hover) :is(tr:hover, .hsb--link-title-anchor:not(:hover)) {
+//     opacity: 85%;
+// }
 
 .hsb--link-title {
     text-align: right;
