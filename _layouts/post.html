@@ -32,7 +32,7 @@ custom_css:
   <div class="post-content">
     {%- if page.heading_anchors -%}
       {% capture content %}
-        {% include vendor/anchor_headings.html html=content anchorBody="#" anchorClass="post-heading-anchor" %}
+        {% include vendor/anchor_headings.html html=content anchorBody="#" anchorClass="post-heading-anchor" anchorAttrs="aria-hidden='true'" %}
       {% endcapture %}
     {%- endif -%}
 
