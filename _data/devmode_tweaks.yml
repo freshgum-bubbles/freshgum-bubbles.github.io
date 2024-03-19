@@ -8,6 +8,7 @@ layouts:
   #  - scss:    converted to CSS and inlined
   #  - js:      inline script
   #  - css:     inline style
+  #  - raw:     inline HTML
   # "location" is either:
   #  - default: placed at end of body by default handler
   #  - *:       requires manual placement

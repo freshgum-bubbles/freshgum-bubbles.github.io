@@ -74,6 +74,8 @@
           <style data-path="{{ path }}">{{ plaintext | scssify }}</style>
         {% else if type == 'js' %}
           <script type="text/javascript" data-path="{{ path }}">{{ plaintext }}</script>
+        {% else if type == 'raw' %}
+          {{ plaintext }}
         {% endif %}
       {%- endfor -%}
     {%- endif -%}
