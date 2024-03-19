@@ -48,7 +48,7 @@
     {%- endif -%}
 
     {%- assign applicable_tweaks = site.data.devmode_tweaks.layouts[page.layout] -%}
-    {%- if jekyll.env != 'production' and site.theme_config.devmode_tweaks and applicable_tweaks -%}
+    {%- if jekyll.environment != 'production' and site.theme_config.devmode_tweaks and applicable_tweaks -%}
       <!-- Devmode tweaks! See See _data/devmode_tweaks.yml for details. -->
       {%- for tweak in applicable_tweaks -%}
         {%- assign type = tweak.type -%}
