@@ -189,20 +189,21 @@ main {
         vertical-align: super;
     }
 
-    .footnote {
-        text-decoration: none;
-        font-size: 10px;
-    }
-
     body {
         /** Tuned to perfection :) */
         padding-left: 11px;
     }
 }
 
-[role="doc-noteref"] {
-    /** Stop footnote links from increasing the line height. */
-    vertical-align: text-bottom;
+.footnote {
+    line-height: 1;
+    &::before {
+        content: '[';
+    }
+
+    &::after {
+        content: ']';
+    }
 }
 
 .footnotes > ol:first-child {
