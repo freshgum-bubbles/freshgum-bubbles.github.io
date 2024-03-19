@@ -1,0 +1,11 @@
+.home--post-list-item-draft {
+    & .home--post-list-item-anchor {
+        transition: opacity 0.15s linear;
+        opacity: 50%;
+
+        &:hover,
+        &:focus {
+            opacity: 80%;
+        }
+    }
+}

@@ -28,6 +28,9 @@ favicon: "logo.png" # name+extension of favicon (which must be put on the root f
 
 theme_config:
   meta_theme_color: true
+
+  # Darken drafted posts on the home-screen in development.
+  theme_drafted_posts: true
   appearance: "auto" # can be "light", "dark" or "auto"
   back_home_text: "to be a freshgum" # customize text for homepage link in post layout
   date_format: "%Y-%m-%d" # customize how date is formatted

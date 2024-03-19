@@ -1,6 +1,15 @@
+{%- assign drafted_item_class = include.list_item_draft_class_name -%}
+
 <ul class="menu_list {{ include.list_class_name }}">
   {%-for item in include.collection-%}
-    <li class="menu_list_item {{ include.list_item_class_name }}">
+    {%- assign item_class_name = "menu_list_item " | append: include.list_item_class_name -%}
+
+    {%- if drafted_item_class and item.draft -%}
+      <!-- DRAFT. -->
+      {%- assign item_class_name = item_class_name | append: " " | append: drafted_item_class -%}
+    {%- endif -%}
+
+    <li class="{{ item_class_name }}">
     {%- if item.url -%}
       <div class="menu_item_meta {{ include.list_item_meta_class_name }}">
         {%- if item.date -%}
