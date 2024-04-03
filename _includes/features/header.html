@@ -1,21 +1,36 @@
 <header>
 	<div class="header--title-and-bio">
 		{%- assign show_bio = site.theme_config.bio.show_on_homepage -%}
+		{%- assign title 	= site.theme_config.default_heading -%}
+		{%- assign bio 		= site.theme_config.bio.text -%}
+
+		<!-- Allow the consumer to override whether the bio is shown. -->
+		{%- if include.show_bio != nil -%}
+			{%- assign show_bio = include.show_bio -%}
+		{%- endif -%}
+
+		{%- if include.title != nil -%}
+			{%- assign title = include.title -%}
+		{%- endif -%}
+
+		{%- if include.bio != nil -%}
+			{%- assign bio = include.bio -%}
+		{%- endif -%}
 
 		{%- if show_bio -%}
-			{%- assign title_class="home--title-with-bio" -%}
+			{%- assign title_class="header--title-with-bio" -%}
 		{%- else -%}
 			{%- assign title_class="" -%}
 		{%- endif -%}
 
-		<h1 class="{{ title_class }} home--title">{% comment %} {{ site.title }} {% endcomment %}in the life of freshgum...</h1>
+		<h1 class="{{ title_class }} header--title">{{ title }}</h1>
 		{%- if show_bio -%}
-			<p class="home--bio">{{ site.theme_config.bio.text }}</p>
+			<p class="header--bio">{{ bio }}</p>
 		{%-endif-%}
 	</div>
 
 	{%- assign features = layout.features -%}
-	{%- if features contains "sidebar-hamburger-menu" -%}
+	{%- if features contains "sidebar-hamburger-menu" and features contains "sidebar" -%}
 		<div class="hsb--toggle">
 			<!--
 				This is one of the only site-wide functions that requires JavaScript.

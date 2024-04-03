@@ -1,7 +1,7 @@
 ---
 ---
 
-@import "breakpoints";
+@import 'breakpoints';
 
 // @media screen and (max-width: $brk-x-sidebar) {
 //     header {
@@ -10,3 +10,24 @@
 //         justify-content: space-around;
 //     }
 // }
+
+.header--title-with-bio {
+	margin-bottom: 0px;
+}
+
+.header--title {
+	margin-top: 0px;
+	color: var(--fg-secondary-text-highlight);
+    font-weight: lighter;
+    font-style: italic;
+}
+
+.header--bio {
+	margin-top: 9px;
+	color: var(--fg-color-deemphasized);
+	font-family: var(--font-auxiliary);
+
+	max-width: 650px;
+	text-align: justify;
+	line-height: 1.5;
+}
