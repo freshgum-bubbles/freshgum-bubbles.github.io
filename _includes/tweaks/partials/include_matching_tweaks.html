@@ -1,0 +1,69 @@
+{%- assign current_location = include.current_location -%}
+{%- assign default_location = "end-of-body" -%}
+
+{%- if site.theme_config.tweaks -%}
+  <!-- Tweaks! See See _data/tweaks.yml for details. -->
+  {%- assign applicable_tweaks = "" |  split: "" -%}
+  {%- assign layout_tweaks = site.data.tweaks.layouts[page.layout] -%}
+  {%- assign all_tweaks = site.data.tweaks.all -%}
+
+  {%- if all_tweaks -%}
+    {%- assign applicable_tweaks = applicable_tweaks | concat: all_tweaks -%}
+  {%- endif -%}
+
+  {%- if layout_tweaks -%}
+    {%- assign applicable_tweaks = applicable_tweaks | concat: layout_tweaks | uniq -%}
+  {%- endif -%}
+
+  {% comment %}
+    Each tweak here in the <applicable_tweaks> list is going to the name of an individual
+    tweak which needs to be applied;  these are then mapped to their respective entries in
+    the "tweaks" array (inside tweaks.yml).  Each entry is an array of resources that are
+    required by the tweak.
+
+    ...as a cursory example:
+    ```yaml
+    tweaks:
+      draft_post:
+        imports:
+          - path: tweaks/layouts/home/styles/draft-post.scss
+            type: scss
+            source: inline
+            environment: development
+    ```
+  {% endcomment %}
+  {%- if applicable_tweaks -%}
+    {%- for tweak_name in applicable_tweaks -%}
+      {%- assign descriptor = site.data.tweaks.tweaks[tweak_name] -%}
+      {%- assign list_of_imports = descriptor.imports -%}
+
+      {%- if list_of_imports == nil -%}
+        <!-- SKIP tweak with name "{{ tweak_name }}" as it has no valid import declarations. -->
+        {% continue %}
+      {%- endif -%}
+
+      {%- for import in list_of_imports -%}
+        {% comment %}
+          If the tweak does not require a specific location, it is placed at
+          the end of the body by default. This is because some tweaks may
+          expect this as it was standard before merging tweaks and feature
+          styles.
+        {% endcomment %}
+        {%- assign required_location = import.location -%}
+
+        {%- if required_location == "" or required_location == nil -%}
+          {%- assign required_location = default_location -%}
+        {%- endif -%}
+
+        {%- if required_location == current_location -%}
+          {% include tweaks/partials/tweak.html tweak=import %}
+        {%- else -%}
+          {% comment %}<!--
+            SKIP tweak with path <{{ import.path }}> due to non-matching location.
+            Current location is "{{ current_location }}" and "{{ required_location }}" is required.
+          -->{% endcomment %}
+        {% endif %}
+      {%- endfor -%}
+    {%- endfor -%}
+  {%- endif -%}
+{%- endif -%}

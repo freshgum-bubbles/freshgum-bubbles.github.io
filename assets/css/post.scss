@@ -18,29 +18,6 @@ h1 {
     font-weight: initial;
 }
 
-.back-link {
-    font-size: 32px;
-    font-weight: lighter;
-    font-style: italic;
-    font-family: var(--font-heading);
-    text-decoration-thickness: from-font;
-
-    line-height: 2.5rem;
-    letter-spacing: -0.02em;
-    color: var(--fg-color-primary);
-}
-
-@media (prefers-color-scheme: dark) {
-    .back-link {
-        filter: brightness(50%);
-        transition: filter 0.5s cubic-bezier(.92,1,.44,1.03);
-    }
-
-    .back-link:hover {
-        filter: brightness(100%);
-    }
-}
-
 main {
     font-family: $font-body-post;
     max-width: 800px;
@@ -154,14 +131,8 @@ main {
 }
 
 .page-content {
-    /**
-     * Center the page.
-     *
-     * Earlier versions of the site didn't do this (this was changed on 15/03/2024),
-     * but after a bit of pontification I've come to the conclusion that this makes
-     * posts a lot easier to read.
-     */
-    margin: 0 auto;
+    margin-left: 45px;
+    max-width: 850px;
 }
 
 .page-content img {
@@ -261,4 +232,10 @@ main {
 
 .text--bold {
     font-weight: bold;
+}
+
+@media screen and (max-width: 990px) {
+    .page-content {
+        margin-left: unset;
+    }
 }

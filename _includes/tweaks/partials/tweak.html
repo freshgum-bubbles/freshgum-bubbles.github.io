@@ -1,0 +1,21 @@
+{% comment %}Tweaks! See See _data/tweaks.yml for details.{% endcomment %}
+{%- assign tweak       = include.tweak -%}
+{%- assign type        = tweak.type -%}
+{%- assign path        = tweak.path -%}
+{%- assign loc         = tweak.location -%}
+{%- assign environment = tweak.environment -%}
+{%- assign source      = tweak.source -%}
+
+{%- if environment == jekyll.environment or environment == nil or environment == "" -%}
+  <!-- Tweak <{{ path }}> with source "{{ tweak.source }}". -->
+  {%- if tweak.source == nil or tweak.source == "inline" -%}
+    {%- include tweaks/partials/sources/inline_tweak.html tweak=tweak -%}
+  {%- else -%}
+    {%- include tweaks/partials/sources/external_tweak.html tweak=tweak -%}
+  {%- endif -%}
+{%- else -%}
+  <!--
+    SKIP tweak with path <{{ path }}> due to non-matching environment.
+    Value is "{{ jekyll.environment }}" and "{{ environment }}" is required.
+  -->
+{%- endif -%}

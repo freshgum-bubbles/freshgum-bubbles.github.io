@@ -1,0 +1,22 @@
+{%- assign tweak       = include.tweak -%}
+{%- assign type        = tweak.type -%}
+{%- assign path        = tweak.path -%}
+{%- assign loc         = tweak.location -%}
+{%- assign environment = tweak.environment -%}
+{%- assign source      = tweak.source -%}
+
+{%- capture plaintext -%}{%- include {{ path }} -%}{%- endcapture -%}
+
+<!-- III: {{ tweak }} -->
+
+{%- if type == 'raw' -%}
+  {{ plaintext }}
+{%- else if type == 'scss' -%}
+  <style>{{ plaintext | scssify }}</style>
+{%- else if type == 'js' -%}
+  <script>{{ plaintext }}</script>
+{%- else if type == 'mjs' -%}
+  <script type="module">{{ plaintext }}</script>
+{%- else if type == 'css' -%}
+  <style>{{ plaintext }}</style>
+{%- endif -%}

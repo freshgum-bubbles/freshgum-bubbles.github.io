@@ -13,6 +13,6 @@
         "*.html": "html"
     },
     "[liquid]": {
-        "editor.formatOnSave": true
+        "editor.formatOnSave": false
     }
 }

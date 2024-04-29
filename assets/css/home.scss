@@ -4,26 +4,19 @@
 @import "theme";
 @import "breakpoints";
 
-.home--title-with-bio {
-  margin-bottom: 0px;
+.home--whoami > p {
+  font-family: "PT Serif";
+  font-size: 19px;
+  line-height: 2.2rem;
+  letter-spacing: 0.001;
+  padding-top: 10px;
 }
 
-.home--title {
-  margin-top: 0px;
-  color: var(--fg-secondary-text-highlight);
-}
-
-.home--bio {
-  margin-top: 9px;
-  color: var(--fg-color-deemphasized);
-  font-family: var(--font-auxiliary);
-}
-
-.home--root {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
+// .home--root {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+// }
 
 .home--sidebar {
   // display: none;
@@ -66,11 +59,4 @@
 
 .home--post-list-item-anchor {
   font-family: #{$font-heading};
-}
-
-@media screen and (min-width: $brk-medium) {
-	.page-container {
-		max-width: 1400px;
-    margin: auto;
-	}
 }

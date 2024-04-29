@@ -1,0 +1,23 @@
+---
+layout: default
+---
+
+{%-include features/header.html
+    title="experiments..."
+    show_bio=true
+    bio="A collection of small, interactive webpages focused on experimenting with a certain technology."
+-%}
+
+{%-include menu_item.html
+	show_dates=false
+	estimate_ttr=false
+	display_item_meta=false
+	add_meta_separator=true
+	collection=site.experiments
+	list_class_name="home--post-list"
+	list_item_class_name="home--post-list-item"
+	list_item_meta_class_name="home--post-list-item__meta"
+	list_item_anchor_class_name="home--post-list-item-anchor"
+	list_item_meta_ttr_class_name="home--post-list-item__meta-ttr"
+	list_item_meta_separator_class_name="home--post-list-item__meta-separator"
+-%}

@@ -1,0 +1,28 @@
+---
+---
+
+@import "breakpoints";
+@import "theme";
+
+.back-link {
+    font-size: 32px;
+    font-weight: lighter;
+    font-style: italic;
+    font-family: var(--font-heading);
+    text-decoration-thickness: from-font;
+
+    line-height: 2.5rem;
+    letter-spacing: -0.02em;
+    color: var(--fg-color-primary);
+}
+
+@media (prefers-color-scheme: dark) {
+    .back-link {
+        filter: brightness(50%);
+        transition: filter 0.5s cubic-bezier(.92,1,.44,1.03);
+    }
+
+    .back-link:hover {
+        filter: brightness(100%);
+    }
+}

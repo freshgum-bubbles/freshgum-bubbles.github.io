@@ -6,9 +6,9 @@
  * It relies on variables defined in that file to function.
  */
 
-@import './vendor/normalize-8.0.1.css';
 @import 'theme';
 @import 'breakpoints';
+@import '../fonts/et-book/et-book.css';
 
 .page-content {
 	/** consume 100% width of body / html hierarchy */
@@ -114,4 +114,15 @@ td {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+}
+
+.page-container--spacer {
+	width: 30px;
+}
+
+@media screen and (min-width: $brk-medium) {
+	.page-container {
+		max-width: 1400px;
+    	margin: auto;
+	}
 }

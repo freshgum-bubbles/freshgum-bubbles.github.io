@@ -1,6 +1,6 @@
 title: "freshgum's page" # name of the site
 author: freshgum bubbles # name of site's author
-email: riccardo.graziosi97@gmail.com # email of site's author
+email: freshgum.bubbles@protonmail.com # email of site's author
 url: https://freshgum.github.io # root address of the site
 baseurl: "/" # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
 description: > # description of the site (multiple lines allowed)
@@ -9,6 +9,8 @@ description: > # description of the site (multiple lines allowed)
 collections_dir: collections
 collections:
   posts:
+    output: true
+  experiments:
     output: true
 
 defaults:
@@ -27,10 +29,13 @@ favicon: "logo.png" # name+extension of favicon (which must be put on the root f
 # theme: no-style-please # if you are using GitHub Pages, change it to remote_theme: riggraz/no-style-please
 
 theme_config:
-  # Devmode tweaks! See See _data/devmode_tweaks.yml for details.
-  devmode_tweaks: true
+  # See See _data/tweaks.yml for details.
+  tweaks: true
 
   meta_theme_color: true
+
+  # The default heading displayed via the header include.
+  default_heading: "in the life of freshgum..."
 
   # Darken drafted posts on the home-screen in development.
   theme_drafted_posts: true
@@ -40,7 +45,11 @@ theme_config:
   show_description: true # show blog description in home page
   bio:
     show_on_homepage: true
-    text: "Privacy researcher, programmer, web developer. Nuance is paramount."
+    text: >
+      I'm a developer interested in performance, TypeScript, everyday appliances, and UX / design.
+      If I find something interesting, I'll probably write about it here; my hope for this website is that
+      my random musings and explorations are able to teach you something, and possibly encourage you
+      to delve into things you find interesting, too.
 
 sass:
   # style: compressed

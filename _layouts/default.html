@@ -1,37 +1,35 @@
 <!DOCTYPE html>
-<html lang="{{ page.lang | default: 'en' }}">
-  {% comment %} {%- capture custom_css -%}{{ layout.custom_css | join: ',' }}{%- endcapture -%} {% endcomment %}
-  {%- assign features = layout.features %}
-
-  {%- include head.html custom_css=layout.custom_css features=features -%}
+<html lang="{{ page.lang | default: 'en' }}" data-layout="{{ page.layout }}">
+  {%- include head.html custom_css=layout.custom_css -%}
 
   <!-- If we're dealing with a sidebar, we need to put the main container in flex via a class. -->
   {%- capture container_classname -%}
-    {%- if features contains "sidebar" -%}with-sidebar{%- endif -%}
+  {%comment%}todo{%endcomment%}
+    {%- if true -%}with-sidebar{%- endif -%}
   {%- endcapture -%}
-
   <body>
+    {%- include tweaks/partials/include_matching_tweaks.html current_location="start-of-body" -%}
+
     <div class="page-container {{ container_classname }}">
       <main class="page-content" aria-label="Content">
+        {%- include tweaks/partials/include_matching_tweaks.html current_location="default--page-content-start" -%}
         {{ content }}
       </main>
 
-      <!-- Special case: if the site is requesting a sidebar, we need to manually include it. -->
-      <!-- The sidebar partial already wraps itself in an <aside> -- no need to add another here. -->
-      {%- if features contains "sidebar" -%}
-        {%- include features/sidebar.html -%}
-      {%- endif -%}
+      <div class="page-container--spacer"></div>
+
+      {%- include tweaks/partials/include_matching_tweaks.html current_location="default--page-container-end" -%}
     </div>
 
-    {%-if site.goat_counter and jekyll.environment == "production"-%}
-      {%-include goat_counter.html-%}
-    {%-endif-%}
+    {%- if site.goat_counter and jekyll.environment == "production" -%}
+      {%- include goat_counter.html -%}
+    {%- endif -%}
 
     {%- if page.custom_js -%}
       {%- for mod in page.custom_js -%}
         <!-- We choose 11 here because that's the length of "/_includes/". -->
         {%- assign beginning_of_path = mod.path | split: "" | slice: 0, 11 -%}
-        {%-if mod.inline and beginning_of_path == "/_includes/" -%}
+          {%- if mod.inline and beginning_of_path == "/_includes/" -%}
           <!--
             If the first character is a forward slash, it's a local file. We can inline those.
             Note that if you try to include a file outside of _includes, this won't work.
@@ -47,38 +45,7 @@
       {%- endfor -%}
     {%- endif -%}
 
-    {%- assign applicable_tweaks = site.data.devmode_tweaks.layouts[page.layout] -%}
-    {%- if jekyll.environment != 'production' and site.theme_config.devmode_tweaks and applicable_tweaks -%}
-      <!-- Devmode tweaks! See See _data/devmode_tweaks.yml for details. -->
-      {%- for tweak in applicable_tweaks -%}
-        {%- assign type = tweak.type -%}
-        {%- assign path = tweak.path -%}
-        {%- assign loc  = tweak.location -%}
-
-        {%- if loc != "default" and loc != nil -%}
-          <!-- SKIP tweak with path <{{ path }}> due to non-default location. -->
-          {% comment %}
-            Anything with a non-default location value is skipped.
-            This allows for manual placement by individual layouts.
-          {% endcomment %}
-          {% continue %}
-        {%- endif -%}
-
-        {%- capture plaintext -%}
-          {%- include {{ path }} -%}
-        {%- endcapture -%}
-
-        {% if type == 'css' %}
-          <style data-path="{{ path }}">{{ plaintext }}</style>
-        {% else if type == 'scss' %}
-          <style data-path="{{ path }}">{{ plaintext | scssify }}</style>
-        {% else if type == 'js' %}
-          <script type="text/javascript" data-path="{{ path }}">{{ plaintext }}</script>
-        {% else if type == 'raw' %}
-          {{ plaintext }}
-        {% endif %}
-      {%- endfor -%}
-    {%- endif -%}
+    {%- include tweaks/partials/include_matching_tweaks.html current_location="end-of-body" -%}
   </body>
 
 </html>

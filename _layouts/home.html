@@ -2,40 +2,34 @@
 layout: default
 custom_css:
   - home
-features:
-  - sidebar
-  - sidebar-hamburger-menu
-  - header
 ---
-
-{%- if layout.features contains "header" -%}
-	{%- include features/header.html -%}
-{%- endif -%}
 
 <div class="home--root">
 	<section class="home--feed">
 		{%- if jekyll.env != 'production' and site.theme_config.theme_drafted_posts -%}
-			<!-- Class styles in <_includes/devmode_tweaks/layouts/home/styles/draft-post.scss> -->
+			<!-- Class styles in <_includes/tweaks/layouts/home/styles/draft-post.scss> -->
 			{%- assign list_item_draft_class_name='home--post-list-item-draft' -%}
+			{%- assign list_item_empty_class_name='home--post-list-item-empty' -%}
 		{%- else -%}
 			{%- assign list_item_draft_class_name='' %}
+			{%- assign list_item_empty_class_name='' -%}
 		{%- endif -%}
 
 		{%-include menu_item.html
 			estimate_ttr=true
 			collection=site.posts
+			display_item_meta=true
 			add_meta_separator=true
 			list_class_name="home--post-list"
 			list_item_class_name="home--post-list-item"
 			list_item_draft_class_name=list_item_draft_class_name
+			list_item_empty_class_name=list_item_empty_class_name
 			list_item_meta_class_name="home--post-list-item__meta"
 			list_item_anchor_class_name="home--post-list-item-anchor"
 			list_item_meta_ttr_class_name="home--post-list-item__meta-ttr"
 			list_item_meta_separator_class_name="home--post-list-item__meta-separator"
 		-%}
 	</section>
-
-	{% comment %} <section class="home--sidebar">{%- include sidebar.html -%}</section> {% endcomment %}
 </div>
 
 {{ content }}

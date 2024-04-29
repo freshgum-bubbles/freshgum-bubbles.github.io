@@ -1,0 +1,16 @@
+{%- assign tweak       = include.tweak -%}
+{%- assign type        = tweak.type -%}
+{%- assign path        = tweak.path -%}
+{%- assign loc         = tweak.location -%}
+{%- assign environment = tweak.environment -%}
+{%- assign source      = tweak.source -%}
+
+{%- if type == 'css' or type == 'scss' -%}
+    <link href="{{ tweak.path | relative_url }}" rel="stylesheet" />
+{%- else if type == 'js' -%}
+  <script type="text/javascript" src="{{ tweak.path | relative_url }}"></script>
+{%- else if type == 'mjs' -%}
+  <script type="module" src="{{ tweak.path | relative_url }}"></script>
+{%- else if type == 'raw' -%}
+  <!-- SKIP tweak with path <{{ tweak.path }}> as it was requested as "inline", but type is "raw". -->
+{%- endif -%}

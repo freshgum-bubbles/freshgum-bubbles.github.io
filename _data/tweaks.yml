@@ -1,0 +1,111 @@
+# Tweaks are a collection of small tweaks applied to individual layouts
+# only when the site is in development mode.
+# Tweaks are applied (via the default layout) in the order they're set here.
+
+# Schema:
+#   "type" is either:
+#    - scss:          converted to CSS and inlined
+#    - js:            script
+#    - css:           style
+#    - raw:           HTML
+#
+#   "source" is either:
+#    - external:      included via referencing the file via path
+#    - inline:        inline the resource into the document
+#
+#   "location" is either:
+#    - end-of-body:   placed at end of <body>
+#    - end-of-head:   placed in the document's <head>
+#    - start-of-head: placed at the start of <head>
+#    - start-of-body: placed at the start of <body>
+#    - *:             requires manual placement
+#
+#   "environment" corresponds with the JEKYLL_ENV environmental variable.
+#   If an environment value is provided, the tweak will only be applied when
+#   the JEKYLL_ENV variable matches the value provided.
+#
+#   "layouts" is a list of layouts where the respective tweak will automatically
+#   be applied -- if it is manually included by way of <tweak.html>, this will have
+#   no effect.  It only applies to <include_matching_tweaks.html>.
+#   Alternatively, "all" may be supplied to symbolize that the tweak should apply
+#   to all layouts.
+
+tweaks:
+  draft_post:
+    imports:
+      - path: tweaks/layouts/home/styles/draft-post.scss
+        type: scss
+        source: inline
+        environment: development
+  invert_avatar:
+    imports:
+      - path: tweaks/layouts/home/styles/invert-avatar.scss
+        type: scss
+        source: inline
+        environment: development
+  inspect:
+    imports:
+      - path: tweaks/all/styles/inspect.scss
+        type: scss
+        source: inline
+        environment: development
+  sidebar:
+    imports:
+      - path: assets/css/features/sidebar.css
+        type: scss
+        source: external
+        location: start-of-head
+      - path: features/sidebar.html
+        type: raw
+        source: inline
+        location: default--page-container-end
+  sidebar_hamburger_menu:
+    imports:
+      - path: assets/css/features/sidebar-hamburger-menu.css
+        type: scss
+        source: external
+  header:
+    imports:
+      - path: assets/css/features/header.css
+        type: scss
+        source: external
+        location: end-of-head
+      - path: features/header.html
+        type: raw
+        source: inline
+        location: default--page-content-start
+  back_link:
+    imports:
+      - path: tweaks/generic/back_link.html
+        type: raw
+        source: inline
+        location: main--header
+      - path: assets/css/features/back-link.css
+        type: scss
+        source: external
+  # lightbox:
+  #   - path: assets/web-components/lightbox-carousel/lightbox-carousel.mjs
+  #     type: mjs
+
+# These tweaks apply to all layouts.
+all:
+  - inspect
+
+# These tweaks apply to the layouts where the
+# key of this record matches the layout's name.
+layouts:
+  home:
+    - draft_post
+    - invert_avatar
+    - sidebar
+    - sidebar_hamburger_menu
+    - header
+  experiments:
+    - sidebar
+    - sidebar_hamburger_menu
+    - header
+  post:
+    - lightbox
+    - back_link
+  experiment:
+    - back_link

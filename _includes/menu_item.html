@@ -1,4 +1,5 @@
 {%- assign drafted_item_class = include.list_item_draft_class_name -%}
+{%- assign list_item_empty_class_name = include.list_item_empty_class_name -%}
 
 <ul class="menu_list {{ include.list_class_name }}">
   {%-for item in include.collection-%}
@@ -7,12 +8,19 @@
     {%- if drafted_item_class and item.draft -%}
       <!-- DRAFT. -->
       {%- assign item_class_name = item_class_name | append: " " | append: drafted_item_class -%}
+
+      {%- if (item.excerpt == "" or item.excerpt == "\n" or item.excerpt == nil) and list_item_empty_class_name -%}
+        <!-- EMPTY. -->
+        {% comment %}This does not currently work.{% endcomment %}
+        {%- assign item_class_name = item_class_name | append: " " | append: list_item_empty_class_name -%}
+      {%- endif -%}
     {%- endif -%}
 
     <li class="{{ item_class_name }}">
     {%- if item.url -%}
-      <div class="menu_item_meta {{ include.list_item_meta_class_name }}">
-        {%- if item.date -%}
+      {%- if include.display_item_meta -%}
+        <div class="menu_item_meta {{ include.list_item_meta_class_name }}">
+        {%- if item.date and include.show_dates != false -%}
           <time class="menu_item_date" datetime="{{ item.date }}">{{ item.date | date: "%B %e, %Y" }}</time>
         {%- endif -%}
 
@@ -41,6 +49,7 @@
           </span>
         {%- endif -%}
       </div>
+      {%- endif -%}
       <a href="{{ item.url }}" class="menu_item_link {{ include.list_item_anchor_class_name }}">{{ item.title }}</a>
     {%- else -%}
       <span class="menu_item_title">{{ item.title }}</span>

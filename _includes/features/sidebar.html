@@ -4,8 +4,6 @@
 	{%- if avatar -%}
 		{%- assign avatar_w = avatar.width | default: 325 -%}
 		{%- assign avatar_h = avatar.height | default: 325 -%}
-
-		<!-- | asset:"@magick:quality=85,crop={{ avatar_w }},{{ avatar_h }}" }} -->
 		<div class="hsb--avatar">
 			<img
 				class="hsb--avatar-image"
@@ -44,12 +42,12 @@
 			<h2 class="hsb--title u__with-trailing-ellipsis">flavours</h2>
 			<p class="hsb--paragraph">Things I'm currently working on.</p>
 		</section>
+		{% endcomment %}
 
-		<section name="snippets">
-			<h2 class="hsb--title u__with-trailing-ellipsis">experiments</h2>
+		<section name="experiments">
+			<h2 class="hsb--title u__with-trailing-ellipsis"><a href="/experiments">experiments</a></h2>
 			<p class="hsb--paragraph">A collection of small, interactive webpages focused on experimenting with a certain technology.</p>
 		</section>
-		{% endcomment %}
 
 		<section name="feeds">
 			<h2 class="hsb--title u__with-trailing-ellipsis">feeds</h2>

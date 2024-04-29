@@ -19,19 +19,20 @@
     {{ emergency_scss | scssify }}
   </style>
 
+  {%- include tweaks/partials/include_matching_tweaks.html current_location="start-of-head" -%}
+
   <!--
     Find below a utility class ("u__js_enabled") which allows stylesheets
     to only show elements when JavaScript is enabled.
-
+  
     It's important to note here that we progressively enhance the webpage.
     This means that, as opposed to starting out under the assumption that
     JavaScript is enabled, we begin by assuming it's not present, and then
     adding auxilliary functionality to the page if it is.
-
+  
     As a general rule, we've made an effort to ensure that each function
     which requires JavaScript has an appropriate fallback which works when
     it isn't enabled or, if that's not possible, the function is hidden.
-
     N.B. It should be noted that u__ is considered a reserved prefix for
     site-wide utility classes.
     Think of "utility classes" as basically a very small subset of Tailwind.
@@ -44,28 +45,39 @@
 
   <!--
     Meta theme support[1] lives here.
-
+  
     This essentially changes the colour of the top chrome on mobile,
     so it matches the background of the page.
-
+  
     This will work as long as we keep this lined up with whatever background
     we're using for the page.
-
     [1]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta/name/theme-color
   -->
   {%- if site.theme_config.meta_theme_color -%}
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="{{ site.data.colors.themes.dark.background }}" />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="{{ site.data.colors.themes.light.background }}" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: dark)"
+      content="{{ site.data.colors.themes.dark.background }}" />
+    <meta
+      name="theme-color"
+      media="(prefers-color-scheme: light)"
+      content="{{ site.data.colors.themes.light.background }}" />
   {%- endif -%}
 
 
-  {%-seo title=false-%}
-  {%-feed_meta-%}
+  {%- seo title=false -%}
+  {%- feed_meta -%}
 
-  <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | relative_url }}" />
+  <link
+    rel="shortcut icon"
+    type="image/x-icon"
+    href="{{ site.favicon | relative_url }}" />
 
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" />
-  <link rel="stylesheet" media="print" href="{{ '/assets/css/print.css' | relative_url }}" />
+  <link
+    rel="stylesheet"
+    media="print"
+    href="{{ '/assets/css/print.css' | relative_url }}" />
 
   <!-- The including layout may request that we include custom CSS files. -->
   {%- if include.custom_css -%}
@@ -74,31 +86,18 @@
     {%- endfor -%}
   {%- endif -%}
 
-  <!--
-    The default.html template may give us a list of features which this page uses.
-    Each feature may be associated with a list of styles: for example, the "sidebar"
-    feature is associated with the "sidebar" style.  These styles are names / sub-paths
-    of CSS files under the /assets/css/ folder.
-
-    Here, we just need to iterate over those features and emit a stylesheet reference
-    for each feature's required stylesheets.
-  -->
-  {%- if include.features -%}
-    {%- for feature in include.features -%}
-      {%- assign feature_styles = site.data.feature_styles[feature] -%}
-
-      {%- if feature_styles -%}
-        {%- for style_name in feature_styles -%}
-          <link rel="stylesheet" href="{{ '/assets/css/' | append: style_name | append: '.css' | relative_url }}" />
-        {%- endfor -%}
-      {%- endif -%}
-    {%- endfor -%}
-  {%- endif -%}
-
   <!-- todo: remove all these, replace with local fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin>
+  {% comment %} <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet"> {% endcomment %}
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  {%- include tweaks/partials/include_matching_tweaks.html current_location="end-of-head" -%}
 </head>

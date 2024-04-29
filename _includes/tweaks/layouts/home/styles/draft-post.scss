@@ -8,4 +8,8 @@
             opacity: 80%;
         }
     }
+
+    &.home--post-list-item-empty {
+        filter: grayscale(100%);
+    }
 }
